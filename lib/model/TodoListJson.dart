@@ -16,14 +16,13 @@ class TodoModel with ChangeNotifier {
   List<TodoItem> _todoItem = [];
 
   List<TodoItem> get todo {
-    return [..._todoItem];
+    return _todoItem;
   }
 
   Future<void> fetchTodo() async {
     final response = await get('https://jsonplaceholder.typicode.com/todos');
     final jsonData = json.decode(response.body);
-    _todoItem
-        .addAll(new List<TodoItem>.from(jsonData.map((json) => new TodoItem(
+    _todoItem.addAll(new List<TodoItem>.from(jsonData.map((json) => new TodoItem(
               userId: json['userId'],
               id: json['id'],
               title: json['title'],
@@ -31,18 +30,4 @@ class TodoModel with ChangeNotifier {
             ))));
     notifyListeners();
   }
-
-//  factory TodoJson.fromJson(Map<String, dynamic> json) => new TodoJson(
-//        userId: json['userId'],
-//        id: json['id'],
-//        title: json['title'],
-//        completed: json['completed'],
-//      );
-
-//  Map<String, dynamic> toJson() => {
-//        "userId": userId,
-//        "id": id,
-//        "title": title,
-//        "completed": completed,
-//      };
 }

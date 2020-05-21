@@ -1,5 +1,5 @@
-import 'package:TestAppFlutter/TodoListJson.dart';
-import 'package:TestAppFlutter/todo_list_screen.dart';
+import 'file:///E:/AndroidSetup/StudioWorkspace/flutter_app/lib/model/TodoListJson.dart';
+import 'file:///E:/AndroidSetup/StudioWorkspace/flutter_app/lib/screen/todo_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
