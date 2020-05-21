@@ -1,33 +1,25 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
+import 'package:TestAppFlutter/model/TodoItemModel.dart';
 import 'package:http/http.dart';
 
-class TodoItem with ChangeNotifier {
-  final int userId;
-  final int id;
-  final String title;
-  final bool completed;
+class TodoModel {
+  List<TodoItemModel> _todoItem = [];
 
-  TodoItem({this.userId, this.id, this.title, this.completed});
-}
-
-class TodoModel with ChangeNotifier {
-  List<TodoItem> _todoItem = [];
-
-  List<TodoItem> get todo {
+  List<TodoItemModel> get todo {
     return _todoItem;
   }
 
   Future<void> fetchTodo() async {
     final response = await get('https://jsonplaceholder.typicode.com/todos');
     final jsonData = json.decode(response.body);
-    _todoItem.addAll(new List<TodoItem>.from(jsonData.map((json) => new TodoItem(
+    print("jsonData $jsonData");
+    _todoItem
+        .addAll(List<TodoItemModel>.from(jsonData.map((json) => TodoItemModel(
               userId: json['userId'],
               id: json['id'],
               title: json['title'],
               completed: json['completed'],
             ))));
-    notifyListeners();
   }
 }

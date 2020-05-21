@@ -1,8 +1,8 @@
-import 'file:///E:/AndroidSetup/StudioWorkspace/flutter_app/lib/model/TodoListJson.dart';
+import 'package:TestAppFlutter/model/TodoItemModel.dart';
 import 'package:flutter/material.dart';
 
 class TodoListItem extends StatelessWidget {
-  final TodoItem todo;
+  final TodoItemModel todo;
 
   TodoListItem(this.todo);
 
