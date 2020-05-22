@@ -42,7 +42,6 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
     if (!mounted) {
       return Future.value(null);
     }
-
     return _updateConnectionStatus(result);
   }
 
@@ -71,24 +70,26 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
   Widget build(BuildContext ctx) {
     final bloc = BlocProvider.of(ctx).bloc;
     bloc.fetchData();
-    return _isInternetConnected ?
-    StreamBuilder<List<TodoItemModel>>(
-        stream: bloc.todoStream,
-        builder: (context, AsyncSnapshot<List<TodoItemModel>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return ShimmerList();
-          }
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (ctx, i) => TodoListItem(snapshot.data[i]),
-            );
-          }
-          return Center(
-            child: Text("texting"),
+    return _isInternetConnected
+        ? StreamBuilder<List<TodoItemModel>>(
+            stream: bloc.todoStream,
+            builder: (context, AsyncSnapshot<List<TodoItemModel>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return ShimmerList();
+              }
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (ctx, i) => TodoListItem(snapshot.data[i]),
+                );
+              }
+              return Center(
+                child: Text("An error occured"),
+              );
+            })
+        : Center(
+            child: Text("Please check your internet connection."
+                "and retry again."),
           );
-        }):Center(
-      child: Text("No Interconnections"),
-    ) ;
   }
 }
