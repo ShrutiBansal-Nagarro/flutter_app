@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:TestAppFlutter/model/TodoItemModel.dart';
+import 'package:TestAppFlutter/model/todo_list_item_model.dart';
 import 'package:http/http.dart';
 
 class TodoModel {

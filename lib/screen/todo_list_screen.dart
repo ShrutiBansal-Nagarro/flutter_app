@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:TestAppFlutter/bloc/bloc_provider.dart';
-import 'package:TestAppFlutter/custom/ShimmerCustom.dart';
-import 'package:TestAppFlutter/model/TodoItemModel.dart';
+import 'package:TestAppFlutter/custom/shimmer_custom.dart';
+import 'package:TestAppFlutter/model/todo_list_item_model.dart';
 import 'package:TestAppFlutter/widgets/todo_ist_item.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
