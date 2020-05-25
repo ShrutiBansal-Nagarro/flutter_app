@@ -1,4 +1,7 @@
-# flutterapp
+# Todo App
+- Bloc pattern for state management
+- Rest Api implemented
+- listview 
 
 A new Flutter application.
 
